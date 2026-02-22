@@ -35,7 +35,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <ModeToggle />
           <Link
-            href="https://github.com"
+            href="https://github.com/Harikesh-14/Sutra"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer inline-flex items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-200"
