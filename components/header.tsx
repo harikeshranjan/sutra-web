@@ -9,7 +9,6 @@ export default function Header() {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-2xl bg-white/40 dark:bg-neutral-950/40 border-b border-neutral-200/60 dark:border-neutral-800/60 transition-all duration-500 shadow-sm shadow-neutral-100/50 dark:shadow-neutral-900/50">
       <div className="container mx-auto flex items-center justify-between px-6 py-3.5">
-
         <Link
           href={"/"}
           className="group flex items-center gap-2 cursor-pointer"
@@ -23,7 +22,7 @@ export default function Header() {
         <ul className="flex items-center gap-1">
           <li>
             <Link
-              href={"/docs"}
+              href={"/docs/introduction"}
               className="cursor-pointer relative inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-all duration-200"
             >
               Docs
