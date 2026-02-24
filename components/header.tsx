@@ -22,7 +22,7 @@ export default function Header() {
         <ul className="flex items-center gap-1">
           <li>
             <Link
-              href={"/docs/introduction"}
+              href={"/docs/getting-started/introduction"}
               className="cursor-pointer relative inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-all duration-200"
             >
               Docs

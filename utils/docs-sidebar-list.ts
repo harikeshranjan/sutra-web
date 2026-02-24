@@ -6,17 +6,17 @@ export const docsSidebarList = [
       {
         id: "introduction",
         title: "Introduction",
-        href: "/docs/introduction"
+        href: "/docs/getting-started/introduction"
       },
       {
         id: "installation",
         title: "Installation",
-        href: "/docs/installation"
+        href: "/docs/getting-started/installation"
       },
       {
         id: "quick-start",
         title: "Quick Start",
-        href: "/docs/quick-start"
+        href: "/docs/getting-started/quick-start"
       }
     ]
   },
@@ -61,7 +61,7 @@ export const docsSidebarList = [
     heading: "Configuration",
     items: [
       {
-        id: ".sutra file",
+        id: "sutra-file",
         title: "The .sutra file",
         href: "/docs/configuration/sutra-file"
       },
