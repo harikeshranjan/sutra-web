@@ -1,26 +1,125 @@
----
-title: Introduction
-description: Welcome to Sutra documentation
----
+# Introduction
 
-# Introduction 👋
+**Sutra** is an AI-powered CLI tool that works entirely on your local machine using a local large language model (LLM). It helps you manage your git workflow with ease — from smart commits and branch management to deep codebase analysis and conflict resolution.
 
-Welcome to the **Sutra Documentation**.
-
-Sutra helps you generate meaningful commit messages using AI.
+> 🔒 **Your code never leaves your machine.** Sutra runs on local LLMs, so your codebase is never transmitted anywhere. No API keys. No cloud dependency. Just fast, private, AI-assisted git.
 
 ---
 
 ## Why Sutra?
 
-- ✨ Smart commit messages
-- ⚡ Fast local execution
-- 🧠 Learns from your project history
+Modern git workflows are repetitive and error-prone. Sutra brings AI intelligence directly into your terminal, handling the cognitive overhead of version control so you can focus on building.
+
+<table className= "w-full text-left border-collapse border border-gray-300">
+  <tr className="bg-gray-100 dark:bg-gray-700 font-bold border border-gray-300">
+    <th className="border border-gray-300 px-4 py-2">Feature</th>
+    <th className="border border-gray-300 px-4 py-2">What it does</th>
+  </tr>
+  <tr>
+    <td className="border border-gray-300 px-4 py-2"><code>sutra init</code></td>
+    <td className="border border-gray-300 px-4 py-2">Bootstraps your git repo with a single command</td>
+  </tr>
+  <tr>
+    <td className="border border-gray-300 px-4 py-2"><code>sutra commit</code></td>
+    <td className="border border-gray-300 px-4 py-2">Generates semantic commit messages from your diffs</td>
+  </tr>
+  <tr>
+    <td className="border border-gray-300 px-4 py-2"><code>sutra analyze</code></td>
+    <td className="border border-gray-300 px-4 py-2">Surfaces insights about your project history and architecture</td>
+  </tr>
+  <tr>
+    <td className="border border-gray-300 px-4 py-2"><code>sutra whoami</code></td>
+    <td className="border border-gray-300 px-4 py-2">Shows your current git user and branch context</td>
+  </tr>
+  <tr>
+    <td className="border border-gray-300 px-4 py-2"><code>sutra --help</code></td>
+    <td className="border border-gray-300 px-4 py-2">Displays help information for Sutra commands</td>
+  </tr>
+</table>
+
+Sutra is designed to be **fast**, **efficient**, and **easy to use** — whether you're a solo developer moving fast or part of a team enforcing commit conventions.
 
 ---
 
-## Example Usage
+## Getting Started
+
+### 1. Initialize your repository
+
+Point Sutra at your remote repository and choose a branch. It handles remote configuration, branch tracking, and the initial fetch automatically.
+
+```bash
+sutra init
+```
+
+You'll be prompted for two things:
+
+```bash
+› Enter your repository URL: https://github.com/you/repo
+› Enter the branch name: (main)
+```
+
+### 2. Make your first AI commit
+
+Run `sutra commit` and the AI stages your changes, analyzes the diff, and proposes a conventional commit message. You stay in full control — accept, edit, or abort.
 
 ```bash
 sutra commit
 ```
+
+```bash
+📡 Fetching latest changes...
+✨ Staging all changes...
+🤖 Generating commit message using AI...
+
+✅ AI-generated commit message: [feat(cli)] add introduction
+
+? Do you want to use this commit message?
+❯ Yes, commit and push
+  No, edit message
+  No, abort commit
+```
+
+### 3. Analyze your codebase
+
+Get a deep AI-powered analysis of your project — commit patterns, architectural hotspots, contributor trends, and more.
+
+```bash
+sutra analyze
+```
+
+```
+🔍 Scanning project structure...
+📊 Analyzing commit history...
+✅ Analysis complete
+
+  Codebase summary:
+  - 142 commits across 3 contributors
+  - Most changed file: src/cli/index.ts
+  - Dominant pattern: feature-branch workflow
+  - Suggested: consolidate utils/ directory
+```
+
+---
+
+## How It Works
+
+Sutra runs a local LLM in the background — compatible with [Ollama](https://ollama.com) and similar local inference servers. When you run a command, Sutra:
+
+1. **Reads** your git state (staged files, diffs, branch info, history)
+2. **Prompts** the local model with structured context about your repo
+3. **Surfaces** the result as an interactive CLI prompt
+4. **Executes** only what you approve
+
+Nothing is sent over the network. The model runs on your hardware.
+
+---
+
+## Next Steps
+
+Let's start with the installation process in the next chapter. We'll guide you through setting up a local LLM and configuring Sutra to work seamlessly with your git workflow.
+
+<div className="mt-4 px-6 py-3 border rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors font-medium shadow-sm cursor-pointer">
+  <a href="/docs/getting-started/installation">
+    Next: Installation Guide
+  </a>
+</div>

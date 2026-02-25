@@ -3,6 +3,7 @@ import { docsSidebarList } from "@/utils/docs-sidebar-list"
 import { compileMDX } from "next-mdx-remote/rsc"
 import { notFound } from "next/navigation"
 import rehypePrettyCode from "rehype-pretty-code"
+import DocsClientComponent from "./docs-client-component"
 
 export async function generateStaticParams() {
   const routes: { slug: string[] }[] = []
@@ -45,11 +46,5 @@ export default async function DocsPage(props: {
     }
   })
 
-  return (
-    <div className="flex justify-center px-4 py-8 mx-auto max-w-4xl">
-      <article className="w-full prose dark:prose-invert ">
-        {content}
-      </article>
-    </div>
-  )
+  return <DocsClientComponent content={content} />
 }
