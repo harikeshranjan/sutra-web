@@ -5,41 +5,78 @@ description: Learn how to install Sutra on your machine
 
 # Installation
 
-To install Sutra, follow these steps:
+To install Sutra, you need to have Node.js and Ollama installed on your machine. Follow the instructions below to get started. You can download Node.js from [here](https://nodejs.org/) and Ollama from [here](https://ollama.com/).
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Harikesh-14/Sutra.git
-   cd Sutra
-   ```
+## 1. Install Node.js
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+Follow the instructions on the [Node.js website](https://nodejs.org/) to install Node.js. Make sure to install the latest LTS version for better stability and compatibility with Sutra.
 
-3. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+## 2. Install Ollama
 
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
+Follow the instructions on the [Ollama website](https://ollama.com/) to install Ollama. Ollama is a tool that allows you to manage and run machine learning models locally. It is required to run the Ministral-3 model, which is used by Sutra.
 
----
-
-## Why Sutra?
-
-- ✨ Smart commit messages
-- ⚡ Fast local execution
-- 🧠 Learns from your project history
-
----
-
-## Example Usage
+## 3. Download Ministral-3:latest model
+To download the Ministral-3:latest model, run the following command in your terminal:
 
 ```bash
-sutra commit
+ollama pull ministral-3:latest
 ```
+This command will download the latest version of the Ministral-3 model to your local machine, allowing you to use it with Sutra.
+
+## 4. Clone the Sutra repository
+Clone the Sutra repository from GitHub using the following command:
+
+```bash
+git clone https://github.com/harikeshranjan/sutra.git
+cd sutra
+```
+
+## 5. Install dependencies
+
+It is recommended to use a package manager like npm or yarn to manage the dependencies for Sutra. Run the following command to install the required dependencies:
+
+```bash
+npm install
+```
+
+## 6. Build the project
+
+You can build the project using the following command:
+
+```bash
+npm run build
+```
+
+This command will compile the TypeScript code and prepare the package for use. Make sure to run this command whenever you make changes to the source code to ensure that the latest version is built and ready for use.
+
+## 7. Link the package
+
+To link the package globally, run the following command:
+
+```bash
+npm link
+```
+
+This command will create a symbolic link to the Sutra package, allowing you to use it globally on your machine. After running this command, you can use the `sutra` command in your terminal to access the Sutra CLI.
+
+## 8. Verify the installation
+
+To verify that Sutra is installed correctly, run the following command:
+
+```bash
+sutra --help
+```
+
+You should see the help menu for Sutra, indicating that it has been installed successfully. You can now start using Sutra to build your applications!
+
+---
+
+# Next Steps
+
+Now that you have Sutra installed, you can start exploring its features and capabilities. Check out the Quick Start Guide to learn how to create your first Sutra application.
+
+<div className="mt-4 px-6 py-3 border rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors font-medium shadow-sm cursor-pointer">
+  <a href="/docs/getting-started/quick-start" className="no-underline">
+    Next: Quick Start Guide
+  </a>
+</div>
