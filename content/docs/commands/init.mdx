@@ -1,0 +1,33 @@
+---
+title: Init Command
+description: Learn about the `sutra init` command, which initializes a new Sutra repository in your project and connects it to your Git repository.
+---
+
+# Init Command
+
+This command basically works exactly like `git init` command, but with some extra user-friendly prompts to help you set up Sutra in your project. It initializes a new Sutra repository in your project, allowing you to start using Sutra's features for generating commit messages, analyzing your codebase, and more.
+
+```bash
+sutra init
+
+> Enter your repository URL: <REPOSITORY_URL>
+> Enter your branch name: (main)
+```
+
+When you run `sutra init`, it will prompt you to enter your repository URL and branch name. This information is used to connect Sutra to your Git repository, allowing it to fetch the latest changes and generate commit messages based on your codebase.
+
+After you have initialized Sutra in your project, you can start using other Sutra commands like `sutra commit` to generate AI-powered commit messages, `sutra analyze` to get insights about your codebase, and more.
+
+> **Note:** If you have already initialized a Git repository in your project, but haven't created any branch or committed any code yet, it is recommended to delete the `.git` folder before running `sutra init` to avoid any conflicts. You can do this by running `rm -rf .git` in your terminal. This is because when you run `sutra commit` for the first time, Sutra will try to fetch the latest changes from the remote repository, and if there is an existing Git repository with a different branch or commit history, it may cause issues with fetching the latest changes. Deleting the `.git` folder will allow Sutra to initialize a new Git repository and connect it to your remote repository without any conflicts.
+
+---
+
+# Next Step
+
+Now that you have initialized Sutra in your project, you can start using other Sutra commands to enhance your development workflow. It is recommended to read about the `sutra commit` command next, as it is one of the core features of Sutra that allows you to generate AI-powered commit messages based on your code changes. You can also explore other commands like `sutra analyze` to get insights about your codebase and improve your development process. Check out the [Commands Reference](./introduction) to learn more about the available commands and how to use them effectively.
+
+<div className="mt-4 px-6 py-3 border rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors font-medium shadow-sm cursor-pointer">
+  <a href="/docs/commands/commit" className="no-underline">
+    Next: Commit Command
+  </a>
+</div>
