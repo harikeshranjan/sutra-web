@@ -2,10 +2,11 @@
 
 import { docsSidebarList } from "@/utils/docs-sidebar-list"
 import Link from "next/link"
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function DocsSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const isActive = (href: string) => pathname === href;
 
@@ -18,10 +19,10 @@ function DocsSidebar() {
             <ul className="mt-2 ml-1.5">
               {
                 section.items.map(item => (
-                  <li key={item.id} className={`border-l hover:border-blue-500 pl-4 py-2 hover:bg-neutral-50 hover:dark:bg-neutral-800 rounded-r-md transition-colors duration-200 cursor-pointer ${isActive(item.href) ? 'bg-neutral-50 dark:bg-neutral-800 border-l border-blue-500' : ''}`}>
-                    <Link href={item.href} className={`text-sm transition-colors duration-200 ${isActive(item.href) ? 'text-blue-500' : 'text-neutral-700 dark:text-neutral-300 hover:text-blue-500'}`}>
+                  <li key={item.id} onClick={() => router.push(item.href)} className={`border-l hover:border-blue-500 pl-4 py-2 hover:bg-neutral-50 hover:dark:bg-neutral-800 rounded-r-md transition-colors duration-200 cursor-pointer ${isActive(item.href) ? 'bg-neutral-50 dark:bg-neutral-800 border-l border-blue-500' : ''}`}>
+                    <p className={`text-sm transition-colors duration-200 ${isActive(item.href) ? 'text-blue-500' : 'text-neutral-700 dark:text-neutral-300 hover:text-blue-500'}`}>
                       {item.title}
-                    </Link>
+                    </p>
                   </li>
                 ))
               }
