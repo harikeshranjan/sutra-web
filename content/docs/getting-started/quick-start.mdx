@@ -1,0 +1,66 @@
+---
+title: Quick Start
+description: Learn how to create your first Sutra application in just a few steps.
+---
+
+# Quick Start Guide
+
+Now that you have Sutra installed, you can start building your first application. Follow the steps below to create a simple Sutra application that uses the Ministral-3 model.
+
+> **Note:** Since this project is still in the beta version, it is recommended to delete the `.git` folder if your project framework has already built a git repository for you while creating the project.
+
+## Step 0: If your project framework has already built a git repository for you while creating the project, please delete the `.git` folder.
+
+You need to do this only when `.git` folder is already created by your project framework and you haven't created any branch and committed any code yet. If you have already created a branch and committed code, please skip this step.
+
+```bash
+rm -rf .git
+```
+
+## Step 2: Initialize Sutra
+
+```bash
+sutra init
+
+> Enter your repository URL: <REPOSITORY_URL>
+> Enter your branch name: (main)
+```
+
+## Step 3: Start committing your code
+
+```bash
+sutra commit
+
+📡 Fetching latest changes...
+✨ Staging all changes...
+🤖 Generating commit message using AI...
+
+✅ AI-generated commit message: [feat(cli)] add introduction
+
+? Do you want to use this commit message?
+❯ Yes, commit and push
+  No, edit message
+  No, abort commit
+```
+
+## Step 4: Analyze your codebase
+
+This command surfaces insights about your project history and architecture, analyzing commit patterns, code structure, and potential areas for improvement.
+
+```bash
+sutra analyze
+```
+
+---
+
+# Next Step
+
+Now you have set up Sutra in your project. You are all set to start committing your code and let Sutra help you with generating commit messages, analyzing your codebase, and providing insights to improve your development workflow.
+
+Now you can explore the commands available in Sutra and start using them in your development workflow. You can also check out the [Commands Reference](./introduction) to learn more about the available commands and how to use them effectively.
+
+<div className="mt-4 px-6 py-3 border rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors font-medium shadow-sm cursor-pointer">
+  <a href="/docs/commands/init" className="no-underline">
+    Next: Init Command
+  </a>
+</div>
