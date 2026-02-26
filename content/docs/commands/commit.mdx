@@ -1,0 +1,53 @@
+---
+title: Commit Command
+description: Learn about the `sutra commit` command, which generates AI-powered commit messages based on your code changes and helps you maintain a clean and informative commit history.
+---
+
+# Commit Command
+
+The `sutra commit` command is one of the core features of Sutra that allows you to generate AI-powered commit messages based on your code changes. It analyzes the changes you have made in your codebase and generates a concise and informative commit message that accurately describes the changes.
+
+When you run `sutra commit`, it will prompt you to enter a brief description of the changes you have made, and then it will use AI to generate a more detailed commit message based on your input and the code changes. This helps you maintain a clean and informative commit history, making it easier for you and your team to understand the changes made in each commit.
+
+```bash
+sutra commit
+ 
+📡 Fetching latest changes...
+✨ Staging all changes...
+🤖 Generating commit message using AI...
+ 
+✅ AI-generated commit message: [feat(cli)] add introduction
+ 
+? Do you want to use this commit message?
+❯ Yes, commit and push
+  No, edit message
+  No, abort commit
+```
+
+## Workflow
+
+1. When you run `sutra commit`, it will first fetch the latest changes from your remote repository to ensure that it has the most up-to-date information about your codebase.
+
+2. Then, it will stage all the changes you have made in your codebase, preparing them for commit.
+
+3. After staging the changes, it will use AI to analyze the changes and generate a concise and informative commit message based on your input and the code changes.
+
+4. Finally, it will prompt you to review the generated commit message and choose whether to use it, edit it, or abort the commit.
+
+5. If you choose to use the generated commit message, it will commit the changes and push them to your remote repository. If you choose to edit the message, it will open your default text editor where you can modify the generated commit message before committing. If you choose to abort the commit, it will cancel the commit process and leave your changes unstaged.
+
+## Benefits
+
+Using `sutra commit` can help you maintain a clean and informative commit history, making it easier for you and your team to understand the changes made in each commit. It also saves you time and effort in writing commit messages, allowing you to focus more on coding and less on documentation. Additionally, it can help you follow best practices for writing commit messages, such as using a consistent format and including relevant information about the changes made in each commit.
+
+---
+
+# Next Step
+
+Now that you have learned about the `sutra commit` command, you can start using it in your development workflow to generate AI-powered commit messages for your code changes. It is recommended to read about the `sutra analyze` command next, as it provides insights about your codebase and helps you identify areas for improvement. Check out the [Commands Reference](./introduction) to learn more about the available commands and how to use them effectively.
+
+<div className="mt-4 px-6 py-3 border rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors font-medium shadow-sm cursor-pointer">
+  <a href="/docs/commands/analyze" className="no-underline">
+    Next: Analyze Command
+  </a>
+</div>
