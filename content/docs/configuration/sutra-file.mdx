@@ -1,0 +1,275 @@
+---
+title: Sutra File
+description: Sutra file is a configuration file that defines the structure of the data and the rules for processing it. It is used to specify the data sources, transformations, and outputs for a data pipeline.
+---
+
+# .sutra File
+
+The .sutra configuration file defines repository metadata, commit styling rules, and analysis behavior for the Sutra AI-powered commit assistant.
+It enables structured commit message generation and configurable repository analysis by specifying style preferences and processing options.
+
+## Overview
+
+The configuration file follows a structured format divided into the following sections:
+- Repository Settings
+- Style Configuration
+- Analysis Configuration
+
+Example:
+
+```bash
+REPOSITORY_URL = https://github.com/Harikesh-14/Sutra.git
+BRANCH_NAME = main
+
+[STYLE]
+USES_CONVENTIONAL = true
+TONE = imperative
+DETAIL_LEVEL = moderate
+
+[ANALYSIS]
+ENABLE_PROGRESS_ANALYSIS = true
+CACHE_ANALYSIS = false
+```
+
+## 1. Repository Configuration
+
+Defines which repository and branch Sutra operates on.
+
+`REPOSITORY_URL`
+
+Type: string
+Required: Yes
+
+Specifies the Git repository URL used for commit analysis and generation.
+
+Example:
+
+```bash
+REPOSITORY_URL = https://github.com/Harikesh-14/Sutra.git
+```
+
+Sutra uses this value to:
+- Fetch commit history
+- Analyze repository changes
+- Generate context-aware commit messages
+
+`BRANCH_NAME`
+
+Type: string
+Required: Yes
+
+Specifies the branch Sutra should analyze and generate commits against.
+
+Example:
+```bash
+BRANCH_NAME = main
+```
+
+This ensures:
+- Commit history is read from the correct branch
+- Analysis is scoped properly
+- Progress tracking remains consistent
+
+## 2. Style Configuration ([STYLE])
+
+Controls how AI-generated commit messages are formatted.
+
+```bash
+[STYLE]
+USES_CONVENTIONAL = true
+TONE = imperative
+DETAIL_LEVEL = moderate
+```
+
+These settings directly influence the structure and tone of the generated commit messages.
+
+`USES_CONVENTIONAL`
+
+Type: boolean
+Default: true (recommended)
+
+Determines whether commit messages follow the Conventional Commits specification.
+
+When enabled, commit messages follow this structure:
+
+```bash 
+<type>(optional-scope): <message>
+```
+
+Supported commit types:
+
+Type	Description
+<div className="overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-sm">
+  <table className="w-full border-collapse text-sm">
+    <thead>
+      <tr className="bg-gradient-to-r from-neutral-100 to-neutral-50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+        <th className="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-700/60">Type</th>
+        <th className="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-700/60">Description</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-neutral-100 dark:divide-neutral-700/40">
+      <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">feat</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Introduces a new feature.</td>
+      </tr>
+      <tr className="bg-neutral-50/50 dark:bg-neutral-900/20 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">fix</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Addresses a bug or issue.</td>
+      </tr>
+      <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">docs</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Updates documentation.</td>
+      </tr>
+      <tr className="bg-neutral-50/50 dark:bg-neutral-900/20 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">style</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Improves code formatting without changing functionality.</td>
+      </tr>
+      <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">refactor</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Rewrites code without changing behavior.</td>
+      </tr>
+      <tr className="bg-neutral-50/50 dark:bg-neutral-900/20 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">test</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Adds or modifies tests.</td>
+      </tr>
+      <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">chore</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Maintenance tasks.</td>
+      </tr>
+      <tr className="bg-neutral-50/50 dark:bg-neutral-900/20 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+        <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">perf</td>
+        <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Performance improvements.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Example:
+
+```bash
+feat(auth): add JWT authentication middleware
+```
+
+When set to false, Sutra generates plain commit messages without enforced structure.
+
+`TONE`
+
+Type: "imperative" | "past" | "present"
+Required: Yes
+
+Controls grammatical tone of commit messages.
+
+Available Options
+
+<table className="w-full border-collapse text-sm">
+  <thead>
+    <tr className="bg-gradient-to-r from-neutral-100 to-neutral-50 dark:from-neutral-800/80 dark:to-neutral-800/50">
+      <th className="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-700/60">Value</th>
+      <th className="px-5 py-3.5 text-left text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-700/60">Example</th>
+    </tr>
+  </thead>
+  <tbody className="divide-y divide-neutral-100 dark:divide-neutral-700/40">
+    <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+      <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">imperative</td>
+      <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Commands or instructions (recommended).</td>
+    </tr>
+    <tr className="bg-neutral-50/50 dark:bg-neutral-900/20 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+      <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">past</td>
+      <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Describes completed actions.</td>
+    </tr>
+    <tr className="bg-white dark:bg-neutral-900/40 hover:bg-blue-50/50 dark:hover:bg-neutral-800/60 transition-colors duration-150">
+      <td className="px-5 py-3 font-mono text-[13px] font-semibold text-blue-600 dark:text-blue-400">present</td>
+      <td className="px-5 py-3 text-neutral-600 dark:text-neutral-300">Describes current changes.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Recommendation
+
+`imperative` is strongly recommended and aligns with Git best practices:
+
+> "Use the imperative mood in the subject line"
+
+Example:
+
+```bash
+fix(api): resolve null pointer error
+```
+
+`DETAIL_LEVEL`
+
+Type: `"low" | "moderate" | "high"`
+Required: Yes
+
+Determines how descriptive the commit message should be.
+
+### Options
+
+`low`
+Short, concise message.
+
+```bash
+fix: handle login bug
+```
+
+`moderate`
+Balanced clarity and brevity (recommended).
+
+```bash
+fix(auth): handle login failure when token is expired
+```
+
+`high`
+Highly descriptive message with detailed context.
+
+```bash
+fix(auth): handle login failure when JWT token is expired and improve error response formatting
+```
+
+## 3. Analysis Configuration ([ANALYSIS])
+
+Controls repository inspection and performance behavior.
+
+```bash
+[ANALYSIS]
+ENABLE_PROGRESS_ANALYSIS = true
+CACHE_ANALYSIS = false
+```
+
+`ENABLE_PROGRESS_ANALYSIS`
+Type: boolean
+Default: true
+
+Enables commit history and repository progress tracking.
+
+When enabled, Sutra:
+
+- Analyzes commit history
+- Detects feature evolution
+- Identifies refactoring trends
+- Understands development velocity
+- Generates context-aware commit suggestions
+
+If disabled:
+- Commit generation becomes change-based only
+- No historical context is used
+
+`CACHE_ANALYSIS`
+Type: boolean
+Default: false
+
+Determines whether repository analysis results are cached.
+
+### When `true`
+- Improves performance
+- Reduces repeated repository scans
+- Useful for large repositories
+
+### When `false`
+- Forces fresh analysis every run
+- Ensures up-to-date commit context
+- Slightly slower but more accurate
+
+### Recommended setting:
+- `true` for large teams or CI environments
+- `false` during active development
