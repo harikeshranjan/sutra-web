@@ -1,0 +1,61 @@
+---
+title: Custom Models
+description: Learn how to use custom models in your application.
+---
+
+# Custom Models
+
+In this section, we will explore how to use custom models in your application. Custom models allow you to define your own data structures and logic, giving you more control over how your application handles data.
+
+Since this is an open-source project, we advice you to use your own ollama models or api keys for better performance and outputs. You can also use the default models provided by Ollama, but using your own models will give you more flexibility and control over the outputs.
+
+This project by default uses the ollama model (Ministral-3), which is a powerful language model that can generate high-quality text. However, you can also use your own custom models if you have specific requirements or want to experiment with different models.
+
+To use a custom model, you will need to specify the model name in two files: `projectAnalysis.ts` and `commitAnalyzer.ts`. In these files, you find the following line of code:
+
+```typescript
+const response = await fetch(
+  "http://localhost:11434/api/generate",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "ministral-3",
+      prompt,
+      stream: false,
+      options: {
+        temperature: 0.5,
+      },
+    }),
+  }
+);
+```
+
+You are allowed to tweak the `model` field to use your own custom model and `options` field to customize the behavior of the model. For example, if you have a custom model named "my-custom-model", you would change the line to:
+
+```typescript
+const response = await fetch(
+  "http://localhost:11434/api/generate",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "my-custom-model", 👈🏻 Here
+      prompt,
+      stream: false,
+      options: {
+        temperature: 0.7, 👈🏻 Here
+      },
+    }),
+  }
+);
+```
+Make sure to replace "my-custom-model" with the actual name of your custom model. Additionally, you can adjust the `temperature` option to control the creativity of the generated text. A higher temperature will result in more creative outputs, while a lower temperature will produce more conservative outputs.
+
+## Note
+
+We are still working on easing your work with custom models, and in the future, we plan to add support for environment variables or a configuration file to specify the model and its options without having to modify the code directly. Stay tuned for updates!
