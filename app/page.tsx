@@ -1,11 +1,19 @@
 'use client';
 
-import { Terminal, CheckCircle, Zap, GitMerge, Sparkles, Copy } from "lucide-react";
+import { CheckCircle, Zap, GitMerge, Sparkles, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
-  function handleGithubClick() {
-    window.location.href = "https://github.com/Harikesh-14/Sutra";
+  const router = useRouter();
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
   }
 
   return (
@@ -13,8 +21,8 @@ export default function Home() {
 
       {/* Background radial glow */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-blue-500/5 blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-blue-600/3 blur-[100px]" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-200 h-125 rounded-full bg-blue-500/5 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 rounded-full bg-blue-600/3 blur-[100px]" />
       </div>
 
       {/* ── Hero Section ── */}
@@ -47,6 +55,7 @@ export default function Home() {
           <Button
             size="lg"
             className="cursor-pointer w-full sm:w-auto px-8 py-4 h-auto bg-blue-500 hover:bg-blue-400 text-white font-bold text-base rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/20"
+            onClick={() => router.push("/docs/getting-started/installation")}
           >
             Get Started
           </Button>
@@ -54,7 +63,7 @@ export default function Home() {
             variant="outline"
             size="lg"
             className="cursor-pointer w-full sm:w-auto px-8 py-4 h-auto bg-transparent border border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/10 text-black dark:text-white font-bold text-base rounded-lg transition-all duration-200"
-            onClick={handleGithubClick}
+            onClick={() => router.push("https://github.com/Harikesh-14/Sutra")}
           >
             <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -129,7 +138,7 @@ export default function Home() {
           ].map((card) => (
             <div
               key={card.title}
-              className="group/card p-8 rounded-xl border border-neutral-200 dark:border-white/5 bg-neutral-50 dark:bg-white/[0.01] hover:border-blue-400/50 dark:hover:border-blue-500/40 hover:bg-blue-50/40 dark:hover:bg-white/[0.02] transition-all duration-300 flex flex-col gap-4"
+              className="group/card p-8 rounded-xl border border-neutral-200 dark:border-white/5 bg-neutral-50 dark:bg-white/1 hover:border-blue-400/50 dark:hover:border-blue-500/40 hover:bg-blue-50/40 dark:hover:bg-white/2 transition-all duration-300 flex flex-col gap-4"
             >
               <div className="size-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 dark:text-blue-400 group-hover/card:bg-blue-500/15 transition-colors duration-300">
                 {card.icon}
@@ -188,40 +197,102 @@ export default function Home() {
       {/* ── Install Section ── */}
       <section className="relative z-10 max-w-4xl mx-auto px-6 py-32 border-t border-neutral-200 dark:border-white/5">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-black dark:text-white mb-4">Ready to start?</h2>
-          <p className="text-slate-500 dark:text-slate-400">Install the Sutra CLI and automate your workflow in seconds.</p>
-        </div>
-        <div className="bg-neutral-50 dark:bg-[#0a0a0a] border border-neutral-200 dark:border-white/10 rounded-xl overflow-hidden">
-          {/* Tab bar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-neutral-100 dark:bg-white/5 border-b border-neutral-200 dark:border-white/5">
-            <div className="flex items-center gap-4">
-              <button className="cursor-pointer text-xs font-bold text-black dark:text-white border-b-2 border-blue-500 pb-1 px-1 transition-all">npm</button>
-              <button className="cursor-pointer text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-black dark:hover:text-white pb-1 px-1 transition-all">curl</button>
-            </div>
-            <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-widest uppercase">Installation</span>
-          </div>
-          {/* npm command */}
-          <div className="p-6 flex items-center justify-between bg-white dark:bg-black/40">
-            <code className="font-mono text-sm md:text-base text-neutral-700 dark:text-slate-300">
-              <span className="text-blue-500 dark:text-blue-400">$ </span>npm install -g sutra-cli
-            </code>
-            <button className="cursor-pointer p-2 rounded bg-neutral-100 dark:bg-white/5 hover:bg-neutral-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors">
-              <Copy className="h-4 w-4" />
-            </button>
-          </div>
-          {/* curl command */}
-          <div className="p-6 flex items-center justify-between border-t border-neutral-200 dark:border-white/5 bg-neutral-50 dark:bg-black/20">
-            <code className="font-mono text-sm md:text-base text-slate-400 dark:text-slate-500">
-              <span className="text-blue-500/50 dark:text-blue-400/50">$ </span>curl -sSL https://sutra.sh/install | sh
-            </code>
-            <button className="cursor-pointer p-2 rounded bg-neutral-100 dark:bg-white/5 hover:bg-neutral-200 dark:hover:bg-white/10 text-slate-400 dark:text-slate-500 hover:text-black dark:hover:text-white transition-colors">
-              <Copy className="h-4 w-4" />
-            </button>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-black dark:text-white mb-4">
+            Ready to start?
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400">
+            Install the Sutra CLI and automate your workflow in seconds.
+          </p>
         </div>
 
+        {/** Toggle State */}
+        {(() => {
+          const [activeTab, setActiveTab] = useState<"git" | "npm">("git");
+
+          return (
+            <div className="bg-neutral-50 dark:bg-[#0a0a0a] border border-neutral-200 dark:border-white/10 rounded-xl overflow-hidden">
+
+              {/* Tab Bar */}
+              <div className="flex items-center justify-between px-4 py-3 bg-neutral-100 dark:bg-white/5 border-b border-neutral-200 dark:border-white/5">
+                <div className="flex items-center gap-4">
+
+                  {/* Git Tab */}
+                  <button
+                    onClick={() => setActiveTab("git")}
+                    className={`cursor-pointer text-xs font-bold pb-1 px-1 transition-all ${activeTab === "git"
+                        ? "text-black dark:text-white border-b-2 border-blue-500"
+                        : "text-slate-400 dark:text-slate-500 hover:text-black dark:hover:text-white"
+                      }`}
+                  >
+                    git
+                  </button>
+
+                  {/* NPM Tab */}
+                  <button
+                    onClick={() => setActiveTab("npm")}
+                    className={`cursor-pointer text-xs font-bold pb-1 px-1 transition-all ${activeTab === "npm"
+                        ? "text-black dark:text-white border-b-2 border-blue-500"
+                        : "text-slate-400 dark:text-slate-500 hover:text-black dark:hover:text-white"
+                      }`}
+                  >
+                    npm
+                  </button>
+                </div>
+
+                <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono tracking-widest uppercase">
+                  Installation
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 bg-white dark:bg-black/40 transition-all duration-300">
+
+                {activeTab === "git" && (
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <code className="font-mono text-sm md:text-base text-neutral-700 dark:text-slate-300 break-all">
+                      <span className="text-blue-500 dark:text-blue-400">$ </span>
+                      git clone https://github.com/Harikesh-14/Sutra.git
+                    </code>
+
+                    {/* Copy Button */}
+                    <button
+                      className="cursor-pointer p-2 rounded bg-neutral-100 dark:bg-white/5 hover:bg-neutral-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors"
+                      onClick={() => handleCopy("git clone https://github.com/Harikesh-14/Sutra.git")}
+                    >
+                      {isCopied ? (
+                        <Check className="h-4 w-4 text-green-500" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                )}
+
+                {activeTab === "npm" && (
+                  <div className="flex flex-col items-start gap-3">
+                    <code className="font-mono text-sm md:text-base text-slate-400 dark:text-slate-500">
+                      npm install -g sutra-cli
+                    </code>
+
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                      className="text-blue-500 dark:text-blue-400 font-semibold"
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Trust badges */}
-        <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-400 dark:text-slate-500">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400 dark:text-slate-500">
           {["Lightweight", "No dependencies", "Cross-platform"].map((label) => (
             <div key={label} className="flex items-center gap-2">
               <CheckCircle className="h-4 w-4 text-green-500" />
